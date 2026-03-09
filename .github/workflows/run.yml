@@ -1,0 +1,20 @@
+name: 我的第一個 Action
+
+on:
+  # 手動觸發（按按鈕跑）
+  workflow_dispatch:
+
+  # 每天早上 9:00 台灣時間自動跑（UTC 1:00）
+  schedule:
+    - cron: '0 1 * * *'
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 下載程式碼
+        uses: actions/checkout@v4
+
+      - name: 執行 Python
+        run: python hello.py
